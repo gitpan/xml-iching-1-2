@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//ajdelore//DTD XHTML 1.0 Strict Modified//EN" 
+ "http://www.sfu.ca/~ajdelore/dtd/xhtml1-strict-modified.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <title>The XML I-Ching Oracle</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="stylesheet" href="../anthony.css" type="text/css" />
+  <link rev="author,made" href="mailto:ajdelore@sfu.ca" />
+
+  <style type="text/css">
+  <!--
+    h3 { 
+      font-size:110%;
+      font-weight: bold;
+      margin: 1em 0 0 0; }
+  -->
+  </style>
+
+</head>
+
+<body>
+
+<div id="navbar">
+  <a href="../" title="Home">Home</a>
+  | <a href="./" title="IChing">xml-iching script</a>
+  | <a href="mailto:ajdelore@sfu.ca" title="E-Mail Link">ajdelore@sfu.ca</a>
+</div>
+
+<TMPL_IF askme>
+  <p>You asked the oracle: &quot;<TMPL_VAR NAME="askme">&quot;</p>
+</TMPL_IF>
+
+<TMPL_LOOP NAME="hexagram">
+  <h3><TMPL_VAR NAME="hexnum">. <TMPL_VAR NAME="title"></h3>
+  <div style="float: right;">
+  <TMPL_LOOP NAME="hex_image">
+    <img src="<TMPL_VAR NAME="hex_image_line">"
+         height="8" width="64" /><br />
+  </TMPL_LOOP>
+  </div>
+  <p>
+    <TMPL_VAR NAME="above"> is above.<br />
+    <TMPL_VAR NAME="below"> is below.
+  </p>
+  <p><em>Judgement: </em><TMPL_VAR NAME="judgement"></p>
+  <p><em>Image:  </em><TMPL_VAR NAME="image"></p>
+  <TMPL_LOOP NAME="lines">
+      <p><TMPL_VAR NAME="line"></p>
+  </TMPL_LOOP>
+  <TMPL_IF extra>
+    <p><TMPL_VAR NAME="extra"></p>
+  </TMPL_IF>
+</TMPL_LOOP>
+
+</body>
+</html>
